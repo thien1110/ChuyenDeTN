@@ -1,0 +1,8 @@
+﻿Bien_the,So_dac_trung,Val_MAE_TB,Val_MAE_SD,Val_ME_TB
+"K0 gốc: 17 đặc trưng, không kết nối tắt",17,24.667,1.378,-3.328
+K1: + Census(t−1),18,23.873,3.814,0.525
+"K2: + Census(t−1), có kết nối tắt",18,17.588,0.512,1.746
+K3: + Census(t−1) + lịch ngày dự báo (one-hot),26,20.127,3.226,-1.949
+"K4: + Census(t−1) + lịch ngày dự báo (one-hot), có kết nối tắt",26,17.503,0.062,1.123
+"K5: + Census(t−1) + lịch ngày dự báo (số nguyên), có kết nối tắt",20,17.39,0.388,2.567
+"K6: như K4 nhưng mạng nhỏ (32/16, dropout 0.1)",26,16.206,0.443,1.945

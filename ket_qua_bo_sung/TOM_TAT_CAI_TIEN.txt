@@ -1,0 +1,22 @@
+﻿TÓM TẮT CẢI TIẾN LSTM
+
+[Chọn biến thể – tập Kiểm định, 93 mẫu] MAE của naive Census(t−1) trên tập Kiểm định = 36.25
+[Chọn biến thể] Biến thể được chọn (MAE tập Kiểm định thấp nhất = 16.21): K6: như K4 nhưng mạng nhỏ (32/16, dropout 0.1)
+[LSTM cải tiến – 10 seed, chấm một lần trên tập Kiểm thử] MAE = 18.61 ± 1.04; RMSE = 28.56 ± 1.56; MAPE = 2.92 ± 0.20%; ME = 4.11 ± 4.95; MAE nhỏ nhất/lớn nhất giữa các seed = 16.98/20.95.
+[Bảng 3.1 – LSTM cải tiến, TB các seed] Toàn tập kiểm thử: 193 ngày; MAE = 18.61; RMSE = 28.56; MAPE = 2.92%; ME = 4.11
+[Bảng 3.1 – LSTM cải tiến, TB các seed] Kỳ Tết Nguyên đán: 28 ngày; MAE = 25.54; RMSE = 33.61; MAPE = 6.23%; ME = 15.68
+[Bảng 3.1 – LSTM cải tiến, TB các seed] Ngày thường: 165 ngày; MAE = 17.44; RMSE = 27.55; MAPE = 2.36%; ME = 2.14
+[Bảng 3.2 cập nhật] Naive: ŷ(t) = Census(t−1): MAE = 38.64; RMSE = 51.10; MAPE = 5.72%; ME = 0.52; DM p (bình phương) = 0.0000 → LSTM cải tiến THẮNG (có ý nghĩa thống kê)
+[Bảng 3.2 cập nhật] Seasonal naive: ŷ(t) = Census(t−7): MAE = 75.91; RMSE = 121.86; MAPE = 13.86%; ME = -1.36; DM p (bình phương) = 0.0000 → LSTM cải tiến THẮNG (có ý nghĩa thống kê)
+[Bảng 3.2 cập nhật] ARIMA(7,1,1) – cuốn chiếu 1 bước: MAE = 25.21; RMSE = 34.81; MAPE = 3.92%; ME = 0.20; DM p (bình phương) = 0.0235 → LSTM cải tiến THẮNG (có ý nghĩa thống kê)
+[Bảng 3.2 cập nhật] SARIMA(1, 1, 1)x(1, 1, 1)₇ – cuốn chiếu 1 bước: MAE = 20.08; RMSE = 29.33; MAPE = 3.35%; ME = 0.02; DM p (bình phương) = 0.6630 → Không khác biệt có ý nghĩa thống kê
+[Bảng 3.2 cập nhật] SARIMAX (Is_Weekend, Is_Holiday) – cuốn chiếu 1 bước: MAE = 20.19; RMSE = 29.81; MAPE = 3.37%; ME = 0.03; DM p (bình phương) = 0.5639 → Không khác biệt có ý nghĩa thống kê
+[Bảng 3.2 cập nhật] XGBoost dự báo trực tiếp: MAE = 24.73; RMSE = 35.54; MAPE = 4.12%; ME = 4.45; DM p (bình phương) = 0.0017 → LSTM cải tiến THẮNG (có ý nghĩa thống kê)
+[Bảng 3.2 cập nhật] XGBoost dự báo trực tiếp + CÙNG bộ đặc trưng mới: MAE = 20.41; RMSE = 29.89; MAPE = 3.22%; ME = 1.93; DM p (bình phương) = 0.2429 → Không khác biệt có ý nghĩa thống kê
+[Bảng 3.2 cập nhật] LSTM cải tiến – seed 42: MAE = 17.85; RMSE = 28.16; MAPE = 2.79%; ME = 3.23
+[Bảng 3.2 cập nhật] LSTM cải tiến – trung bình ± SD (10 seed): MAE = 18.61 ± 1.04; RMSE = 28.56 ± 1.56; MAPE = 2.92 ± 0.20%; ME = 4.11 ± 4.95
+
+[TỔNG KẾT – dùng đúng như vậy để viết kết luận]
+  LSTM cải tiến THẮNG có ý nghĩa thống kê: Naive: ŷ(t) = Census(t−1); Seasonal naive: ŷ(t) = Census(t−7); ARIMA(7,1,1) – cuốn chiếu 1 bước; XGBoost dự báo trực tiếp
+  Không khác biệt có ý nghĩa thống kê: SARIMA(1, 1, 1)x(1, 1, 1)₇ – cuốn chiếu 1 bước; SARIMAX (Is_Weekend, Is_Holiday) – cuốn chiếu 1 bước; XGBoost dự báo trực tiếp + CÙNG bộ đặc trưng mới
+  LSTM cải tiến THUA có ý nghĩa thống kê: (không mô hình nào)

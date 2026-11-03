@@ -1,0 +1,4 @@
+﻿Tap,So_ngay,Tu_ngay,Den_ngay,So_mau_sau_cua_so_truot
+Train (70%),698,07/11/2023,04/10/2025,691
+Validation (10%),100,05/10/2025,12/01/2026,93
+Test (20%),200,13/01/2026,31/07/2026,193

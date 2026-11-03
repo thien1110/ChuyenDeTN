@@ -1,0 +1,7 @@
+﻿Bien,Max_train,Max_test,Ty_le_ngay_test_vuot_max_train_%
+Census,940.0,935.0,0.0
+Lag_1,940.0,935.0,0.0
+Lag_2,940.0,935.0,0.0
+Lag_7,940.0,935.0,0.0
+Rolling_Mean_7,892.0,886.4285714285714,0.0
+Emergency_Count,344.0,314.0,0.0

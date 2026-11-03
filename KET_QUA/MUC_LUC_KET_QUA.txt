@@ -1,0 +1,21 @@
+﻿MỤC LỤC KẾT QUẢ: số liệu nào dùng cho chỗ nào của báo cáo
+
+Chương 2 (dữ liệu, EDA)
+  thong_ke_lam_sach.csv            số bản ghi bị loại (mục 2.2.2)
+  A1_thong_ke_mo_ta.csv, hinh/ -> A2_*.png, A3_*.png   thống kê mô tả, biểu đồ chuỗi, ma trận tương quan (mục 2.2.5)
+  A4_Bang_2_1_theo_thu.csv         Bảng 2.1
+  A7_chia_tap.csv                  số ngày, khoảng thời gian, số mẫu từng tập (mục 2.3)
+  TOM_TAT_SO_LIEU.txt              các hệ số tương quan, phạm vi train/test (dòng [Mục 2.2.5], [Mục 3.3])
+Chương 3
+  C0_chon_bien_the_tren_tap_kiem_dinh.csv   bảng quy trình chọn biến thể (Phụ lục)
+  C1_LSTM_theo_seed.csv, C1_du_bao_LSTM_theo_seed.csv   kết quả và dự báo từng seed
+  D1_Bang_3_1_*.csv                Bảng 3.1 (theo giai đoạn)
+  D2_Bang_3_2_so_sanh_mo_hinh.csv  Bảng 3.2 (có kiểm định Diebold–Mariano)
+  B1_*.csv, B1_ACF_PACF.png        căn cứ chọn bậc ARIMA (mục 3.3); B2_*.csv: chọn bậc SARIMA
+  hinh/Hinh_1_*.png (loss), Hinh_2_*.png (dự báo vs thực tế), Hinh_3_*.png (so sánh mô hình)
+Chương 3.4 và 4 (giải thích)
+  surrogate_fidelity_bo_sung.csv   độ trung thành của mô hình đại diện (R², MAE, RMSE, R² dải 650–900)
+  Bang_3_4_hang_tam_quan_trong.csv Bảng 3.4 (SHAP, Permutation, IG)
+  Bang_SHAP_theo_nhom_bien.csv, Bang_SHAP_DayOfWeek_theo_thu_t_tru_1.csv, Bang_3_ngay_minh_hoa.csv, Bang_4_1_*.csv
+  hinh/Hinh_4_*.png ... Hinh_9_*.png, Hinh_SHAP_DayOfWeek_theo_thu.png
+Mục 4.4.2 (ngưỡng cảnh báo): các dòng [Ngưỡng ...], [Cảnh báo ...] trong TOM_TAT_SO_LIEU.txt

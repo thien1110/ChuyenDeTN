@@ -1,0 +1,6 @@
+﻿Nhom_bien,mean_abs_SHAP_cua_tong_nhom_giuong,tong_mean_abs_tung_bien_giuong
+"Quán tính census (Census_t nếu có, Lag_1, Lag_2, Lag_7, Rolling_Mean_7)",86.59,94.6
+"Luồng nhập viện (Admissions, Total_Elderly_Admitted)",2.94,3.09
+"Nhóm bệnh ICD-10 (Total_Cardiovascular, Total_Respiratory, Total_Infectious, Avg_ICD_Sub_Count)",0.78,1.67
+"Lịch của ngày t−1 (DayOfWeek, Is_Weekend, Month, Is_Holiday)",6.65,7.28
+Lịch của ngày dự báo t (nếu có),12.75,15.13

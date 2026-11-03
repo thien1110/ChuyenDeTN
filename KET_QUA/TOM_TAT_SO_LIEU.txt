@@ -1,0 +1,55 @@
+﻿TÓM TẮT SỐ LIỆU ĐỂ ĐIỀN VÀO BÁO CÁO
+(mỗi dòng ghi rõ số này dùng cho chỗ nào)
+
+[Dữ liệu] 998 ngày; Train 698 ngày (07/11/2023 – 04/10/2025), Validation 100 ngày, Test 200 ngày (13/01/2026 – 31/07/2026); 193 mẫu kiểm thử.
+[Bảng 2.1] Ngày nhập viện trung bình cao nhất: Thứ Hai (168.5); ngày ra viện trung bình cao nhất: Thứ Sáu (165.1); Chủ nhật: nhập 23.2, ra 3.9.
+[Mục 2.2.5 – tương quan] r(Lag_1, Lag_2) = 0.938; r(Lag_1, Rolling_Mean_7) = 0.920; r(Lag_2, Rolling_Mean_7) = 0.941; r(Total_Elderly_Admitted, Admissions) = 0.993; người bệnh ≥ 60 tuổi chiếm 79.36% lượt nhập viện; Emergency_Count chiếm trung bình 31.9% census.
+[Mục 3.3 – kiểm tra phạm vi] Census trung bình: train = 751.9, test (không tính kỳ Tết) = 784.6. Tỷ lệ ngày kiểm thử có Census vượt giá trị lớn nhất của train (940) = 0.0%; có Lag_1 vượt = 0.0%.
+[Mục 3.1 – chia tập] Train (70%): 698 ngày (07/11/2023 – 04/10/2025); 691 mẫu sau cửa sổ trượt.
+[Mục 3.1 – chia tập] Validation (10%): 100 ngày (05/10/2025 – 12/01/2026); 93 mẫu sau cửa sổ trượt.
+[Mục 3.1 – chia tập] Test (20%): 200 ngày (13/01/2026 – 31/07/2026); 193 mẫu sau cửa sổ trượt.
+[Bảng 3.1] Kỳ Tết được định nghĩa là 05/02/2026 – 04/03/2026: 28 ngày kiểm thử; ngày thường: 165 ngày.
+[Baseline] Naive: ŷ(t) = Census(t−1): MAE = 38.64; RMSE = 51.10; MAPE = 5.72%; ME = 0.52
+[Baseline] Seasonal naive: ŷ(t) = Census(t−7): MAE = 75.91; RMSE = 121.86; MAPE = 13.86%; ME = -1.36
+[ARIMA – tính dừng, chỉ dùng tập train] ADF chuỗi census: p = 0.0043; ADF sai phân bậc 1: p = 8.004e-09.
+[ARIMA – chọn bậc] Trong lưới p ∈ {0,1,2,3,7}, d = 1, q ∈ {0,1,2}, bậc có AIC thấp nhất trên tập train là (7,1,1) (AIC = 6930.8); AIC của (7,1,1) = 6930.8.
+[ARIMA(7,1,1) cuốn chiếu 1 bước] MAE = 25.21; RMSE = 34.81; MAPE = 3.92%; ME = 0.20
+[ARIMA(7,1,1) cách cũ – KHÔNG dùng để so sánh] MAE = 103.14; RMSE = 151.43. Dự báo cũ gần như đường phẳng: min = 726.3, max = 760.1 giường.
+[SARIMA – chọn bậc theo AIC trên train] SARIMA(1, 1, 1)x(1, 1, 1)₇
+[SARIMA cuốn chiếu 1 bước] MAE = 20.08; RMSE = 29.33; MAPE = 3.35%; ME = 0.02
+[SARIMAX cuốn chiếu 1 bước] MAE = 20.19; RMSE = 29.81; MAPE = 3.37%; ME = 0.03
+[XGBoost trực tiếp] MAE = 24.73; RMSE = 35.54; MAPE = 4.12%; ME = 4.45
+[Chọn biến thể – tập Kiểm định, 93 mẫu] MAE của naive Census(t−1) trên tập Kiểm định = 36.25
+[Chọn biến thể] Biến thể được chọn (MAE tập Kiểm định thấp nhất = 16.21): K6: như K4 nhưng mạng nhỏ (32/16, dropout 0.1) (26 đặc trưng)
+[LSTM – 10 seed, chấm một lần trên tập Kiểm thử] MAE = 18.61 ± 1.04; RMSE = 28.56 ± 1.56; MAPE = 2.92 ± 0.20%; ME = 4.11 ± 4.95; MAE nhỏ nhất/lớn nhất giữa các seed = 16.98/20.95.
+[Mô hình LSTM seed 42] số tham số = 10977; dừng sớm sau 58 epoch; epoch tốt nhất = 43; số đặc trưng = 26.
+[Bảng 3.1 – LSTM, TB các seed] Toàn tập kiểm thử: 193 ngày; MAE = 18.61; RMSE = 28.56; MAPE = 2.92%; ME = 4.11
+[Bảng 3.1 – LSTM, TB các seed] Kỳ Tết Nguyên đán: 28 ngày; MAE = 25.54; RMSE = 33.61; MAPE = 6.23%; ME = 15.68
+[Bảng 3.1 – LSTM, TB các seed] Ngày thường: 165 ngày; MAE = 17.44; RMSE = 27.55; MAPE = 2.36%; ME = 2.14
+[Bảng 3.2] Naive: ŷ(t) = Census(t−1): MAE = 38.64; RMSE = 51.10; MAPE = 5.72%; ME = 0.52; DM p (bình phương) = 0.0000, DM p (tuyệt đối) = 0.0000
+[Bảng 3.2] Seasonal naive: ŷ(t) = Census(t−7): MAE = 75.91; RMSE = 121.86; MAPE = 13.86%; ME = -1.36; DM p (bình phương) = 0.0000, DM p (tuyệt đối) = 0.0000
+[Bảng 3.2] ARIMA(7,1,1) – cuốn chiếu 1 bước: MAE = 25.21; RMSE = 34.81; MAPE = 3.92%; ME = 0.20; DM p (bình phương) = 0.0235, DM p (tuyệt đối) = 0.0000
+[Bảng 3.2] SARIMA(1, 1, 1)x(1, 1, 1)₇ – cuốn chiếu 1 bước: MAE = 20.08; RMSE = 29.33; MAPE = 3.35%; ME = 0.02; DM p (bình phương) = 0.6630, DM p (tuyệt đối) = 0.0823
+[Bảng 3.2] SARIMAX (Is_Weekend, Is_Holiday) – cuốn chiếu 1 bước: MAE = 20.19; RMSE = 29.81; MAPE = 3.37%; ME = 0.03; DM p (bình phương) = 0.5639, DM p (tuyệt đối) = 0.0774
+[Bảng 3.2] XGBoost dự báo trực tiếp: MAE = 24.73; RMSE = 35.54; MAPE = 4.12%; ME = 4.45; DM p (bình phương) = 0.0017, DM p (tuyệt đối) = 0.0000
+[Bảng 3.2] XGBoost dự báo trực tiếp + 26 biến đầu vào của LSTM: MAE = 20.41; RMSE = 29.89; MAPE = 3.22%; ME = 1.93; DM p (bình phương) = 0.2429, DM p (tuyệt đối) = 0.0251
+[Bảng 3.2] LSTM – seed 42: MAE = 17.85; RMSE = 28.16; MAPE = 2.79%; ME = 3.23
+[Bảng 3.2] LSTM – trung bình ± SD (10 seed): MAE = 18.61 ± 1.04; RMSE = 28.56 ± 1.56; MAPE = 2.92 ± 0.20%; ME = 4.11 ± 4.95
+[Ghi chú kiểm định] 7 phép so sánh cùng lúc: ngưỡng Bonferroni = 0.05/7 = 0.0071.
+
+[TỔNG KẾT – viết kết luận đúng như dưới đây]
+  Theo hàm tổn thất bình phương:
+    LSTM thấp hơn có ý nghĩa thống kê: Naive: ŷ(t) = Census(t−1); Seasonal naive: ŷ(t) = Census(t−7); ARIMA(7,1,1) – cuốn chiếu 1 bước; XGBoost dự báo trực tiếp
+    Không khác biệt có ý nghĩa thống kê: SARIMA(1, 1, 1)x(1, 1, 1)₇ – cuốn chiếu 1 bước; SARIMAX (Is_Weekend, Is_Holiday) – cuốn chiếu 1 bước; XGBoost dự báo trực tiếp + 26 biến đầu vào của LSTM
+    LSTM cao hơn có ý nghĩa thống kê: (không mô hình nào)
+  Theo sai số tuyệt đối:
+    LSTM thấp hơn có ý nghĩa thống kê: Naive: ŷ(t) = Census(t−1); Seasonal naive: ŷ(t) = Census(t−7); ARIMA(7,1,1) – cuốn chiếu 1 bước; XGBoost dự báo trực tiếp; XGBoost dự báo trực tiếp + 26 biến đầu vào của LSTM
+    Không khác biệt có ý nghĩa thống kê: SARIMA(1, 1, 1)x(1, 1, 1)₇ – cuốn chiếu 1 bước; SARIMAX (Is_Weekend, Is_Holiday) – cuốn chiếu 1 bước
+    LSTM cao hơn có ý nghĩa thống kê: (không mô hình nào)
+[Độ trung thành – mô hình đại diện] R² train = 1.0000; validation = 0.9792; test = 0.9909; MAE(XGBoost vs LSTM) = 9.50 giường; RMSE = 13.83; R² dải 650–900 = 0.9600 (n = 156 ngày).
+[Spearman] SHAP vs Permutation: rho = -0.129 (p = 0.53); SHAP vs IG: rho = -0.253 (p = 0.212); IG vs Permutation: rho = 0.925 (p = 1.32e-11).
+[Ngưỡng 85% của 765 giường = 650.25] Toàn giai đoạn: 856/998 ngày vượt ngưỡng (85.8%); mức vượt trung bình = 147.3 giường; mức vượt lớn nhất = 289.8 giường.
+[Vượt 100% số giường kế hoạch] 587/998 ngày (58.8%); mức vượt trung bình = 66.6; lớn nhất = 175.0 giường.
+[Cảnh báo = dự báo LSTM + 1 RMSE (28.2) > ngưỡng] Tập kiểm thử: số ngày cảnh báo = 168; cảnh báo đúng = 161; sai = 7; bỏ sót = 0; số ngày thực tế vượt ngưỡng = 161.
+[Cảnh báo ở ngưỡng 100% = 765] số ngày cảnh báo = 130; đúng = 109; sai = 21; bỏ sót = 0; số ngày thực tế vượt = 109.
+[Mức vượt 100% trong tập kiểm thử] trung bình = 63.9 giường; lớn nhất = 170.0 giường.

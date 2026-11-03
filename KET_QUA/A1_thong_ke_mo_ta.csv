@@ -1,0 +1,19 @@
+﻿,Trung bình,Độ lệch chuẩn,Nhỏ nhất,Lớn nhất
+Census,751.02,138.72,183.0,940.0
+Admissions,92.44,56.0,8.0,266.0
+Discharges,92.55,64.23,0.0,280.0
+Avg_Age,66.31,1.08,60.3,68.99
+Emergency_Count,238.41,51.2,38.0,344.0
+DayOfWeek,3.0,2.0,0.0,6.0
+Is_Weekend,0.28,0.45,0.0,1.0
+Month,6.27,3.5,1.0,12.0
+Lag_1,751.13,138.75,183.0,940.0
+Lag_2,751.06,138.73,183.0,940.0
+Lag_7,750.77,138.62,183.0,940.0
+Rolling_Mean_7,750.92,127.52,200.29,892.0
+Is_Holiday,0.04,0.21,0.0,1.0
+Avg_ICD_Sub_Count,4.63,1.17,1.32,11.59
+Total_Elderly_Admitted,73.36,46.26,7.0,227.0
+Total_Respiratory,9.84,6.26,0.0,33.0
+Total_Cardiovascular,10.41,5.58,0.0,29.0
+Total_Infectious,3.74,2.29,0.0,18.0

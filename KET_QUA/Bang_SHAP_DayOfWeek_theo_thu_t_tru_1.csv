@@ -1,0 +1,8 @@
+﻿,count,mean,std
+Thứ Hai (t-1) -> dự báo cho Thứ Ba,28,-5.34,2.8
+Thứ Ba (t-1) -> dự báo cho Thứ Tư,28,-5.43,2.37
+Thứ Tư (t-1) -> dự báo cho Thứ Năm,28,-6.92,2.47
+Thứ Năm (t-1) -> dự báo cho Thứ Sáu,28,-7.5,1.49
+Thứ Sáu (t-1) -> dự báo cho Thứ Bảy,27,2.67,1.1
+Thứ Bảy (t-1) -> dự báo cho Chủ nhật,27,2.97,1.3
+Chủ nhật (t-1) -> dự báo cho Thứ Hai,27,15.78,2.45

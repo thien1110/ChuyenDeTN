@@ -1,0 +1,9 @@
+{
+  "ten": "K6: như K4 nhưng mạng nhỏ (32/16, dropout 0.1)",
+  "census_t": true,
+  "lich": "onehot",
+  "skip": true,
+  "u1": 32,
+  "u2": 16,
+  "drop": 0.1
+}
